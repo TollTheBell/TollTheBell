@@ -1,0 +1,331 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+ <head>
+  <title>TollTheBell Morse Code Converter</title>
+ 
+     <meta name="author" content="Noa Graceman">
+     <meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
+        <!--
+        ORIGINAL AUTHOR: Dennis Schmidt
+        CODE FOUND AT: http://www.javascriptsource.com/miscellaneous/morsecode-encoderdecoder-20-final-79431.html
+        Modified by: Noa Graceman @NoaGraceman (twitter) (revision 002)
+         -->
+         <link href='http://fonts.googleapis.com/css?family=Marcellus+SC' rel='stylesheet' type='text/css'>
+         <link href='http://fonts.googleapis.com/css?family=Metrophobic' rel='stylesheet' type='text/css'>
+         <link href='http://fonts.googleapis.com/css?family=Cutive+Mono' rel='stylesheet' type='text/css'>
+         <style>
+			 * { margin: 0px; padding: 0px; }
+			 body { background-color: #e0FFe0; margin: 10px; padding: 10px; font-family: 'Metrophobic', sans-serif; }
+			 h1, h2, h3, h4, h5 {  font-family: 'Marcellus SC', serif; font-weight: bold;}
+			 h1 { font-size: 200%; border-bottom: solid 1px #222; }
+			 h2 { font-size: 175%; border-bottom: solid 1px #222; }
+			 h3 { font-size: 150%; border-bottom: solid 1px #222; }
+			 h4 { font-size: 125%; }
+			 h5 { font-size: 110%; }
+			 p { margin: 10px; margin-bottom: 8px;}
+			 
+			 .wrapper { padding: 18px; margin: 18px; }
+			 .telekey { 
+				 width:100%;
+
+    /* Firefox */
+    display:-moz-box;
+    -moz-box-pack:center;
+    -moz-box-align:center;
+
+    /* Safari and Chrome */
+    display:-webkit-box;
+    -webkit-box-pack:center;
+    -webkit-box-align:center;
+
+    /* W3C */
+    display:box;
+    box-pack:center;
+    box-align:center;
+				 }
+			 .instructBox { width: 500px;  margin: 18px; padding: 18px; background-color: #cfcfcf; border: dashed 2px #222; border-radius: 20px; }
+			 div.outboxout {
+				 font-size: 120%; 
+				 font-family: 'Cutive Mono' ;
+				 padding: 18px; margin: 18px; width: 400px; height: 200px; overflow: auto; background-color: #c0c0ff; border: solid 1px #222; border-radius: 20px;
+			 }
+			 div.outboxin {
+				 font-size: 130%;
+				 padding: 18px; margin: 18px; width: 400px; height: 200px; overflow: auto; background-color: #c0ffc0; border: solid 1px #222; border-radius: 20px;
+			 }
+			 .inboxin, .inboxout {
+				 background-color: #dfdfdf;
+				 border: dotted 3px #222;
+				 border-radius: 20px;
+				 padding: 18px;
+				 margin: 18px;
+				 width: 450px;
+				 height: 150px;
+				 overflow: auto;
+			 }
+			 .inboxin {}
+			 .inboxout {}
+			 
+         </style>
+<SCRIPT LANGUAGE="JavaScript" type="text/javascript">
+<!--
+function clearing()
+{document.getElementById( 'output' ).innerHTML = " ";}
+ 
+function clearing2()
+{document.getElementById( 'output2' ).innerHTML = " ";}
+ 
+function encode()
+{
+ var dataA = window.document.morse.input.value.toLowerCase();
+ var lenA = dataA.length;
+ var aout = "";
+   
+     
+       for(f=0; f<lenA; f++)
+        {
+         switch (dataA.charAt(f))
+           {
+            case 'a':{aout += " .- "; break;}
+            case 'b':{aout += " -... "; break;}
+            case 'c':{aout += " -.-. "; break;}
+            case 'd':{aout += " -.. "; break;}
+            case 'e':{aout += " . "; break;}
+            case 'f':{aout += " ..-. "; break;}
+            case 'g':{aout += " --. "; break;}
+            case 'h':{aout += " .... "; break;}
+            case 'i':{aout += " .. "; break;}
+            case 'j':{aout += " .--- "; break;}
+            case 'k':{aout += " -.- "; break;}
+            case 'l':{aout += " .-.. "; break;}
+            case 'm':{aout += " -- "; break;}
+            case 'n':{aout += " -. "; break;}
+            case 'o':{aout += " --- "; break;}
+            case 'p':{aout += " .--. "; break;}
+            case 'q':{aout += " --.- "; break;}
+            case 'r':{aout += " .-. "; break;}
+            case 's':{aout += " ... "; break;}
+            case 't':{aout += " - "; break;}
+            case 'u':{aout += " ..- "; break;}
+            case 'v':{aout += " ...- "; break;}
+            case 'w':{aout += " .-- "; break;}
+            case 'x':{aout += " -..- "; break;}
+            case 'y':{aout += " -.-- "; break;}
+            case 'z':{aout += " --.. "; break;}
+            case ' ':{aout += " \/ "; break;}
+            case '.':{aout += " .-.-.- "; break;}
+            case ',':{aout += " --..-- "; break;}
+            case ':':{aout += " ---... "; break;}
+            case '?':{aout += " ..--.."; break;}
+            case '\'':{aout += " .----. "; break;}
+            case '-':{aout += " -....- "; break;}
+            case '\/':{aout += " -..-. "; break;}
+            case '(':{aout += " -.--.-"; break;}
+            case '"':{aout += " .-..-. "; break;}
+            case '@':{aout += " .--.-. "; break;}
+            case '=':{aout += " -...- "; break;}
+            case '0':{aout += " ----- "; break;}
+            case '1':{aout += " .---- "; break;}
+            case '2':{aout += " ..--- "; break;}
+            case '3':{aout += " ...-- "; break;}
+            case '4':{aout += " ....- "; break;}
+            case '5':{aout += " ..... "; break;}
+            case '6':{aout += " -.... "; break;}
+            case '7':{aout += " --... "; break;}
+            case '8':{aout += " ---.. "; break;}
+            case '9':{aout += " ----. "; break;}
+            case 'Ä':{aout += " .-.- "; break;}
+            case 'Á':{aout += " .--.- "; break;}
+            case 'Ch':{aout += " ---- "; break;}
+            case 'É':{aout += " ..-.. "; break;}
+            case 'Ñ':{aout += " --.-- "; break;}
+            case 'Ö':{aout += " ---. "; break;}
+            case 'Ü':{aout += " ..-- "; break;}
+           }
+        }
+     
+   
+   document.getElementById( 'output' ).innerHTML = aout+" ";
+}
+ 
+function decode()
+{
+ var temp = "";
+ var dataB = window.document.morse2.input2
+ var lenB = dataB.value.length;
+ var dout = "";
+ for(ib=0; ib<lenB; ib++)
+  {
+   switch (dataB.value.charAt(ib))
+    {
+     case '.':{temp += "."; break;}
+     case '-':{temp += "-"; break;}
+     case '&':{dout += " "; break;};
+     case '\/':{dout += " "; break;};
+     case ' ':
+      {switch(temp)
+       {
+                       
+        case '.-':{dout +="a"; temp=""; break;}
+        case '-...':{dout +="b"; temp=""; break;}
+        case '-.-.':{dout +="c"; temp=""; break;}
+        case '-..':{dout +="d"; temp=""; break;}
+        case '.':{dout +="e"; temp=""; break;}
+        case '..-.':{dout +="f"; temp=""; break;}
+        case '--.':{dout +="g"; temp=""; break;}
+        case '....':{dout +="h"; temp=""; break;}
+        case '..':{dout +="i"; temp=""; break;}
+        case '.---':{dout +="j"; temp=""; break;}
+        case '-.-':{dout +="k"; temp=""; break;}
+        case '.-..':{dout +="l"; temp=""; break;}
+        case '--':{dout +="m"; temp=""; break;}
+        case '-.':{dout +="n"; temp=""; break;}
+        case '---':{dout +="o"; temp=""; break;}
+        case '.--.':{dout +="p"; temp=""; break;}
+        case '--.-':{dout +="q"; temp=""; break;}
+        case '.-.':{dout +="r"; temp=""; break;}
+        case '...':{dout +="s"; temp=""; break;}
+        case '-':{dout +="t"; temp=""; break;}
+        case '..-':{dout +="u"; temp=""; break;}
+        case '...-':{dout +="v"; temp=""; break;}
+        case '.--':{dout +="w"; temp=""; break;}
+        case '-..-':{dout +="x"; temp=""; break;}
+        case '-.--':{dout +="y"; temp=""; break;}
+        case '--..':{dout +="z"; temp=""; break;}
+        case '.-.-.-':{dout +="."; temp=""; break;}
+        case '--..--':{dout +=","; temp=""; break;}
+        case '---...':{dout +="\:"; temp=""; break;}
+        case '..--..':{dout +="?"; temp=""; break;}
+        case '.----.':{dout +="\'"; temp=""; break;}
+        case '-....-':{dout +="-"; temp=""; break;}
+        case '-..-.':{dout +="\/"; temp=""; break;}
+        case '-.--.-':{dout +="("; temp=""; break;}
+        case '.-..-.':{dout +="\""; temp=""; break;}
+        case '.--.-.':{dout +="@"; temp=""; break;}
+        case '-.--.-':{dout +=")"; temp=""; break;}
+        case '-...-':{dout +="="; temp=""; break;}
+        case '.-.-':{dout +="Ä"; temp=""; break;}
+        case '.--.-':{dout +="Á"; temp=""; break;}
+        case '----':{dout +="Ch"; temp=""; break;}
+        case '..-..':{dout +="É"; temp=""; break;}
+        case '--.--':{dout +="Ñ"; temp=""; break;}
+        case '---.':{dout +="Ö"; temp=""; break;}
+        case '..--':{dout +="Ü"; temp=""; break;}
+        case '-----':{dout +="0"; temp=""; break;}
+        case '.----':{dout +="1"; temp=""; break;}
+        case '..---':{dout +="2"; temp=""; break;}
+        case '...--':{dout +="3"; temp=""; break;}
+        case '....-':{dout +="4"; temp=""; break;}
+        case '.....':{dout +="5"; temp=""; break;}
+        case '-....':{dout +="6"; temp=""; break;}
+        case '--...':{dout +="7"; temp=""; break;}
+        case '---..':{dout +="8"; temp=""; break;}
+        case '----.':{dout +="9"; temp=""; break;}
+       }break;
+      }
+    }
+  }
+  switch(temp)
+       {
+                       
+        case '.-':{dout +="a"; temp=""; break;}
+        case '-...':{dout +="b"; temp=""; break;}
+        case '-.-.':{dout +="c"; temp=""; break;}
+        case '-..':{dout +="d"; temp=""; break;}
+        case '.':{dout +="e"; temp=""; break;}
+        case '..-.':{dout +="f"; temp=""; break;}
+        case '--.':{dout +="g"; temp=""; break;}
+        case '....':{dout +="h"; temp=""; break;}
+        case '..':{dout +="i"; temp=""; break;}
+        case '.---':{dout +="j"; temp=""; break;}
+        case '-.-':{dout +="k"; temp=""; break;}
+        case '.-..':{dout +="l"; temp=""; break;}
+        case '--':{dout +="m"; temp=""; break;}
+        case '-.':{dout +="n"; temp=""; break;}
+        case '---':{dout +="o"; temp=""; break;}
+        case '.--.':{dout +="p"; temp=""; break;}
+        case '--.-':{dout +="q"; temp=""; break;}
+        case '.-.':{dout +="r"; temp=""; break;}
+        case '...':{dout +="s"; temp=""; break;}
+        case '-':{dout +="t"; temp=""; break;}
+        case '..-':{dout +="u"; temp=""; break;}
+        case '...-':{dout +="v"; temp=""; break;}
+        case '.--':{dout +="w"; temp=""; break;}
+        case '-..-':{dout +="x"; temp=""; break;}
+        case '-.--':{dout +="y"; temp=""; break;}
+        case '--..':{dout +="z"; temp=""; break;}
+        case '.-.-.-':{dout +="."; temp=""; break;}
+        case '--..--':{dout +=","; temp=""; break;}
+        case '---...':{dout +="\:"; temp=""; break;}
+        case '..--..':{dout +="?"; temp=""; break;}
+        case '.----.':{dout +="\'"; temp=""; break;}
+        case '-....-':{dout +="-"; temp=""; break;}
+        case '-..-.':{dout +="\/"; temp=""; break;}
+        case '-.--.-':{dout +="("; temp=""; break;}
+        case '.-..-.':{dout +="\""; temp=""; break;}
+        case '.--.-.':{dout +="@"; temp=""; break;}
+        case '-.--.-':{dout +=")"; temp=""; break;}
+        case '-...-':{dout +="="; temp=""; break;}
+        case '.-.-':{dout +="Ä"; temp=""; break;}
+        case '.--.-':{dout +="Á"; temp=""; break;}
+        case '----':{dout +="Ch"; temp=""; break;}
+        case '..-..':{dout +="É"; temp=""; break;}
+        case '--.--':{dout +="Ñ"; temp=""; break;}
+        case '---.':{dout +="Ö"; temp=""; break;}
+        case '..--':{dout +="Ü"; temp=""; break;}
+        case '-----':{dout +="0"; temp=""; break;}
+        case '.----':{dout +="1"; temp=""; break;}
+        case '..---':{dout +="2"; temp=""; break;}
+        case '...--':{dout +="3"; temp=""; break;}
+        case '....-':{dout +="4"; temp=""; break;}
+        case '.....':{dout +="5"; temp=""; break;}
+        case '-....':{dout +="6"; temp=""; break;}
+        case '--...':{dout +="7"; temp=""; break;}
+        case '---..':{dout +="8"; temp=""; break;}
+        case '----.':{dout +="9"; temp=""; break;}
+       }
+  document.getElementById( 'output2' ).innerHTML = dout;
+}
+//-->
+</SCRIPT>
+ 
+</head>
+<body>
+<div class="wrapper"> 
+<h1>TollTheBell Morsecode Encoder/Decoder</h1>
+ 
+
+<div class="instructBox">
+<h3>Instructions</h3>
+<p>Morse code is a method of transmitting text information as a series of on-off tones, lights, or clicks that can be directly understood by a skilled listener or observer without special equipment. <em>(<a href="http://en.wikipedia.org/wiki/Morse_code" target="_BLANK">Wikipedia 2014</a>)</em>
+
+ 
+<h4>Usage:</h4>
+<p>Enter the text or morsecode into the corresponding (upper) box.
+<p>The correct translation should appear in real time in the box below. If not, click the button
+"transform".
+<p>Spaces between the words in morescode are symbolized with " / ".
+<p>The letters in morsecode are seperated with normal spaces.
+</div>
+
+ 
+<div class="telekey">
+<form name="morse" action="get">
+  <h3>Encode</h3>
+  <textarea name="input" cols="40" rows="3" class="inboxin" onFocus="this.value='';" onKeyUp="clearing(); encode();">Enter text here.</textarea><br>
+  <div name="output"  class="outboxin" id="output"  ></div><br>
+  <input type="button" value="transform" onClick="clearing(); encode();">
+  <input type="reset" value="clear">
+</form>
+<br>
+<form name="morse2" action="get">
+  <h3>Decode</h3>
+  <textarea name="input2" cols="40" rows="8" class="inboxout" onFocus="this.value='';" onKeyUp="clearing2(); decode();">Enter morsecode here.</textarea><br>
+  <div name="output2" class="outboxout"  id="output2" ></div><br>
+  <input type="button" value="transform" onClick="clearing2(); decode();">
+  <input type="reset" value="clear">
+</form>
+</div>
+</div>
+</body>
+</html>
